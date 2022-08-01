@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:awesome_icons/awesome_icons.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text(
           'YAŞAM BEKLENTİSİ',
-          style: TextStyle(color: Colors.black54),
+          style: TextStyle(),
         ),
         centerTitle: true,
       ),
@@ -23,28 +24,73 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: MyContainerWidget(),
+                    child: MyContainerWidget(
+                        child: Text('Merhaba Dünya',
+                            style: TextStyle(
+                                color: Colors.deepOrangeAccent,
+                                fontSize: 25.0)),
+                        color: Colors.green),
                   ),
                   Expanded(
-                    child: MyContainerWidget(color: Colors.yellow,),
+                    child: MyContainerWidget(),
                   ),
                 ],
               ),
             ),
             Expanded(
-              child: MyContainerWidget( ),
+              child: MyContainerWidget(),
             ),
             Expanded(
-              child: MyContainerWidget(color: Colors.amber,),
+              child: MyContainerWidget(),
             ),
             Expanded(
               child: Row(
                 children: [
                   Expanded(
-                    child: MyContainerWidget(color: Colors.deepOrangeAccent,),
+                    child: MyContainerWidget(
+                      child: Column(children: [
+                        Expanded(
+                          child: Icon(
+                            FontAwesomeIcons.venus,
+                            size: 50,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Kadın',
+                            style:
+                                TextStyle(fontSize: 25, color: Colors.black54),
+                          ),
+                        )
+                      ]),
+                    ),
                   ),
                   Expanded(
-                    child: MyContainerWidget(color: Colors.green,),
+                    child: MyContainerWidget(
+                      child: Column(children: [
+                        Expanded(
+                          child: Icon(
+                            FontAwesomeIcons.mars,
+                            size: 50,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Erkek',
+                            style:
+                                TextStyle(fontSize: 25, color: Colors.black54),
+                          ),
+                        )
+                      ]),
+                    ),
                   ),
                 ],
               ),
@@ -58,12 +104,19 @@ class _InputPageState extends State<InputPage> {
 
 class MyContainerWidget extends StatelessWidget {
   final Color color;
+  final Widget? child;
 
-  MyContainerWidget({ this.color=Colors.white});
+  MyContainerWidget({this.color = Colors.white, this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: Padding(
+        padding: EdgeInsets.all(15),
+        child: Center(
+          child: child,
+        ),
+      ),
       margin: EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: color,
